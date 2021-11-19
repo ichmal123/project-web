@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 route::get('/self-market', [HomeController::class, 'redirect']);
 
 route::get('/', [HomeController::class, 'index']);
+
+route::get('/product', [AdminController::class, 'product']);
+
+route::post('/uploadProduct', [AdminController::class, 'uploadProduct']);
