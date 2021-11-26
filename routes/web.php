@@ -28,6 +28,12 @@ route::get('/self-market', [HomeController::class, 'redirect']);
 
 route::get('/', [HomeController::class, 'index']);
 
+route::get('/menuproduct', [HomeController::class, 'menuproduct']);
+
 route::get('/product', [AdminController::class, 'product']);
 
+route::get('/showproduct', [AdminController::class, 'showproduct']);
+
 route::post('/uploadProduct', [AdminController::class, 'uploadProduct']);
+
+route::get('/deleteproduct/{id}', [AdminController::class, 'deleteproduct']);

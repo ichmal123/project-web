@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
         if($usertype == '1'){
             return view('admin.home');
         }else {
-            return view('user.home');
+            $data = product::paginate(3);
+            return view('user.home', compact('data'));
         }
     }
 
@@ -22,8 +24,19 @@ class HomeController extends Controller
     	if (Auth::id()) {
     		return redirect('self-market');
     	}else{
-    		return view('user.home');	
+            $data = product::paginate(3);
+    		return view('user.home',compact('data'));	
     	}
     	
     }
+
+    public function menuproduct(){
+        if (Auth::id()) {
+            return redirect('self-market');
+        }else{
+            $data = product::paginate(9);
+            return view('user.menuproduct',compact('data'));   
+        }
+        
+    }    
 }
