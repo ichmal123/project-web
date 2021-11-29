@@ -21,22 +21,17 @@ class HomeController extends Controller
     }
 
     public function index(){
-    	if (Auth::id()) {
-    		return redirect('self-market');
-    	}else{
+    	
             $data = product::paginate(3);
     		return view('user.home',compact('data'));	
-    	}
     	
     }
 
     public function menuproduct(){
-        if (Auth::id()) {
-            return redirect('self-market');
-        }else{
+
             $data = product::paginate(9);
             return view('user.menuproduct',compact('data'));   
-        }
+        
         
     }    
 }

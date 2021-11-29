@@ -58,7 +58,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('/')}}">
+            <a class="nav-link" href="{{url('self-market')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
