@@ -107,6 +107,10 @@
                             @endif
 
                             <div class="border-t border-gray-100"></div>
+                            <x-jet-dropdown-link href="{{ url('self-market') }}">
+                                {{ __('Home') }}
+                            </x-jet-dropdown-link>
+                            <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
