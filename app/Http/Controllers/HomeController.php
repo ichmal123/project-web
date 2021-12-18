@@ -32,6 +32,14 @@ class HomeController extends Controller
             $data = product::paginate(9);
             return view('user.menuproduct',compact('data'));   
         
-        
-    }    
+    }   
+    public function search(Request $request){
+        $search = $request->search;
+        if ($search == '') {
+            $data = product::paginate(3);
+            return view('user.home', compact('data'));
+        }
+        $data = product::where('title', 'Like', '%'.$search.'%')->get();
+        return view('user.home', compact('data'));
+    } 
 }
