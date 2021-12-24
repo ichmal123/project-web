@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 01:23 PM
+-- Generation Time: Dec 24, 2021 at 07:36 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quantity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `name`, `phone`, `address`, `product_title`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
+(1, 'user', '1029012039', 'sdashd', 'Lays', '1', '8000', '2021-12-24 11:26:51', '2021-12-24 11:26:51'),
+(2, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', '2021-12-24 11:33:45', '2021-12-24 11:33:45'),
+(3, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', '2021-12-24 11:34:57', '2021-12-24 11:34:57');
 
 -- --------------------------------------------------------
 
@@ -61,7 +88,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2021_10_07_130254_create_sessions_table', 1),
-(7, '2021_11_19_112750_create_products_table', 2);
+(7, '2021_11_19_112750_create_products_table', 2),
+(8, '2021_12_24_181459_create_carts_table', 3);
 
 -- --------------------------------------------------------
 
@@ -74,6 +102,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('muhammadichmalgumanof@gmail.com', '$2y$10$PT9YJNGihNBAO3ItT0ChY.KBwYaDKoUSOBqBkokTHtnsuaw8nLwQe', '2021-11-26 08:45:16');
 
 -- --------------------------------------------------------
 
@@ -110,6 +145,17 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `price`, `description`, `quantity`, `image`, `created_at`, `updated_at`) VALUES
+(9, 'Chitato', '10000', 'Rasa Ayam Bumbu 75gr', '125', '1637936883.jpg', '2021-11-26 07:28:03', '2021-11-29 10:53:28'),
+(10, 'Lays', '8000', 'Rasa Rumput Laut 35gr', '75', '1637936936.jpg', '2021-11-26 07:28:56', '2021-11-26 07:28:56'),
+(11, 'Cheetos', '2000', 'Rasa Jagung Bakar 15gr', '110', '1637936987.jpg', '2021-11-26 07:29:47', '2021-11-29 10:58:54'),
+(12, 'Chiki Balls', '3000', 'Rasa Ayam Bakar 30gr', '50', '1637937041.jpg', '2021-11-26 07:30:41', '2021-11-26 07:30:41'),
+(13, 'French Fries 2000', '5000', 'Kentang Goreng dengan Saus Sambal 68gr', '60', '1639186089.jpg', '2021-11-26 07:31:55', '2021-12-10 18:28:09');
+
 -- --------------------------------------------------------
 
 --
@@ -130,11 +176,12 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('FfrEvPCe25jNwZ8lCXpB2B6ahYJw9jv8LxO3E07f', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVnJ4dmRHMGhxc3diTktkVlpLMnJrWWRVcWJTUUZnU0RjdEpBam42RiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHByYk9vNG1qM0tNaXA0N0tYcFk4SGVhcURHTkRUQ2tLMmVKQ3hPTEhUai5kVzFxV3RXYzkuIjt9', 1637324042),
-('lcWDBHi3YuhJU8rKBLwsuX9D2xLc9dYAQEvwHixD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUDFXQkNGZU5JNVN6VFBXM3M0eDdCOXlhZ2JHdFRGV3pRMDJuUzdNTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1636767322),
-('PArU98aP18Zs2sPeR3I5utrkJpbN1u7PhzEQ9ql3', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiTWpjTzEzUHVJVlBqTVp5T3JXdlk5T2pOa0lYUUVxRXhFODNIYmhLciI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1637319173),
-('QEuKWv4QC1JyE9CBOZeolD3LrOJJGjIr9hEGvZZp', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidUZxc0RNQXdhN05wMU1EUXdUNDJTSDJVaHFQTHlsdmFwcEpyN2FSOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWxmLW1hcmtldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRwcmJPbzRtajNLTWlwNDdLWHBZOEhlYXFER05EVENrSzJlSkN4T0xIVGouZFcxcVd0V2M5LiI7fQ==', 1635476047),
-('YwNTlivtjOfojWjTfFdIi9byJyvwZHCInPZAGl6J', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiQTFycG42WGg4RVpEYmpIc3ZRak16YlNFSXU5V1pCS25ha1RHd2dYbSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1636764378);
+('C0jSmzqL77MMlMicaj65iaIupWl1h9HRbeJnTIkh', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiMlF4QTg0N09hRWtFVTlGSEVXMkR2WExtSnhaUGVVdUV5ZE9UTzB1MSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639763050),
+('dcegOhR1ROofpqC018pKLro0j3E5kydhDNIwfnZq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQVlCZUR0R0hGdFRzVkUxdFRBNjQzdUZYSXhDS1NZMTZ2dlppMER6ZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1639764702),
+('GPw9JafiXX6Ond2BE6vGaymSr9CFTMQBOc1yJpaU', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSWhGaWJ2R0VaUVFCa1o1ZWMxb0xIT3VrSFI4WWx2OFhkUHhsS2dBMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6ODY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWFyY2g/X3Rva2VuPUloRmlidkdFWlFRQmtaNWVjMW9MSE91a0hSOFlsdjhYZFB4bEtnQTEmc2VhcmNoPXRvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639790877),
+('LbTszx2baIwbIEl0LqDrCve1r5a2yxRv0K8AFjB0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiNGU4UkZCS3o0N2F4QU84b3FoM3Y0Zk9iTmxEWG5XMkZRMXdqV21aMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1640369845),
+('r6OThqOz51HXPKkZ32PtPis9omyPJfDh1UmUmSvW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSVRZcVZLcEhGVEZtdW9YaHVGekRUSUwzWjZXVmZSa09qMW9ubXJsMSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639789666),
+('zFvF6rlb8DM7ReS6rCvCADPQAMpn44sk0Xnin4RJ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYmZjRzJJN1pCVTRrVlFMOGJHNm9oQ1RrR0ptZzJrNXVpT1dtVmxaTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWxmLW1hcmtldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRiWHdwb0FLa1pLbHp0eTk4cy5SeEsuQnpHR0dwWDByZHJuYUJMUTZERzFXTHRaLnFjcDFiSyI7fQ==', 1640370898);
 
 -- --------------------------------------------------------
 
@@ -165,12 +212,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'user', 'user@gmail.com', '0', '0942141212', 'test', NULL, '$2y$10$IAWEasmKcqh0YIfJnepG7Os5MpcAkgJUThZv88Ech7ufmms..P/c6', NULL, NULL, NULL, NULL, NULL, '2021-10-07 07:07:53', '2021-10-07 07:07:53'),
-(2, 'admin', 'admin@gmail.com', '1', '123124812', 'admin', NULL, '$2y$10$prbOo4mj3KMip47KXpY8HeaqDGNDTCkK2eJCxOLHTj.dW1qWtWc9.', NULL, NULL, NULL, NULL, NULL, '2021-10-07 07:09:14', '2021-10-07 07:09:14');
+(1, 'user', 'user@gmail.com', '0', '1029012039', 'sdashd', NULL, '$2y$10$bXwpoAKkZKlzty98s.RxK.BzGGGpX0rdrnaBLQ6DG1WLtZ.qcp1bK', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:14:46', '2021-11-29 10:14:46'),
+(2, 'admin', 'admin@gmail.com', '1', '12381728', 'shdjahsjk', NULL, '$2y$10$2VghHKoaYoq0TMQyAYDZVenEZC03/4Epo.mpx4aZAjJF.tt6CddUe', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:15:28', '2021-11-29 10:15:28');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -225,6 +278,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -234,7 +293,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -246,7 +305,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
