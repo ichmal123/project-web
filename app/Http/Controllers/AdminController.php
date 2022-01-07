@@ -7,13 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
    	public function product()
     {
-            return view('admin.product');
-    	
+    	if (Auth::id()) {
+    		if (Auth::user()->usertype == '1') {
+    			return view('admin.product');
+    		}else {
+    			return redirect()->back();
+    		}
+    	}else {
+    		return redirect('login');
+    	}    	
     }
     public function uploadProduct(Request $request)
     {
@@ -35,7 +43,7 @@ class AdminController extends Controller
     	$image = $request->file;
     	if ($image) {
     		$imagename = time().'.'.$image->getClientOriginalExtension();
-    		$request->file->move('productimage',$imagename);
+	    		$request->file->move('productimage',$imagename);
     		$data->image=$imagename;
     	}
     	$data->title=$request->title;
@@ -48,8 +56,17 @@ class AdminController extends Controller
 
     public function showproduct()
     {
-            $data = product::all();
-    		return view('admin.showproduct',compact('data'));
+    	if (Auth::id()) {
+    		if (Auth::user()->usertype == '1') {
+    			$data = product::all();
+    			return view('admin.showproduct',compact('data'));
+    		}else {
+    			return redirect()->back();
+    		}
+    	}else {
+    		return redirect('login');
+    	}
+            
     }
 
     public function deleteproduct($id){
@@ -62,5 +79,26 @@ class AdminController extends Controller
     public function updateview($id){
     	$data = product::find($id);
     	return view('admin.updateview',compact('data'));
+    }
+
+    public function showorder(){
+    	if (Auth::id()) {
+    		if (Auth::user()->usertype == '1') {
+    			$order = order::all();
+    			return view('admin.showorder', compact('order'));
+    		}else {
+    			return redirect()->back();
+    		}
+    	}else {
+    		return redirect('login');
+    	}
+    	
+    }
+
+    public function updatestatus($id){
+    	$order = order::find($id);
+    	$order->status = 'delivered';
+    	$order->save();
+    	return redirect()->back();
     }
 }

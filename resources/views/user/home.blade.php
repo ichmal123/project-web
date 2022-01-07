@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <title>Self Market</title>
 
@@ -44,14 +45,14 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="{{url('/')}}"><h2>Self <em>Market</em></h2></a>
+          <a class="navbar-brand" href="{{url('self-market')}}"><h2>Self <em>Market</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="{{'/'}}">Home
+                <a class="nav-link" href="{{url('self-market')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li> 
@@ -67,8 +68,12 @@ https://templatemo.com/tm-546-sixteen-clothing
 
               @if (Route::has('login'))
                     @auth
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{url('showcart')}}">
+                      <i class="fas fa-shopping-cart"></i>Cart[{{$count}}]</a>
+                    </li>
                         <x-app-layout>
-    
+                          
                         </x-app-layout>
                     @else
                         <li><a class="nav-link" href="{{ route('login') }}">Log in</a></li>

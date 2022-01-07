@@ -51,29 +51,29 @@ https://templatemo.com/tm-546-sixteen-clothing
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="{{url('self-market')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li> 
-              <li class="nav-item active">
-                <a class="nav-link" href="products.html">Our Products</a>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url('menuproduct')}}">Our Products</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                @if (Route::has('login'))
+              </li class="nav-item">
+
+              @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
                       <a class="nav-link" href="{{url('showcart')}}">
                       <i class="fas fa-shopping-cart"></i>Cart[{{$count}}]</a>
                     </li>
                         <x-app-layout>
-    
+                          
                         </x-app-layout>
                     @else
                         <li><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
@@ -83,46 +83,54 @@ https://templatemo.com/tm-546-sixteen-clothing
                         @endif
                     @endauth
             @endif
-              </li>
+
             </ul>
           </div>
         </div>
       </nav>
+      @if(session()->has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <p style="text-align: center;">{{session()->get('message')}}</p>
+            
+      @endif
     </header>
 
-    <!-- Page Content -->
-    <div class="page-heading products-heading header-text">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4>new arrivals</h4>
-              <h2>self-market products</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    @include('user.bodymenuproduct')
-
-    
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
-            
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
+  <div style="padding: 100px;" align="center">
+    <table>
+      <tr style="background-color: gray;">
+        <td style="padding: 10px; font-size: 20px;">Address</td>
+        <td style="padding: 10px; font-size: 20px;">Product Name</td>
+        <td style="padding: 10px; font-size: 20px;">Quantity</td>
+        <td style="padding: 10px; font-size: 20px;">Price</td>
+        <td style="padding: 10px; font-size: 20px;">Status</td>
+      </tr>
+        @csrf
+      @foreach($order as $orders)
+      <tr style="background-color:  black;">
+        <td style="padding: 10px; color: white;">
+          {{$orders->address}}
+        </td>
+        <td style="padding: 10px; color: white;">
+          {{$orders->product_name}}
+        </td>
+        <td style="padding: 10px; color: white;">
+          {{$orders->quantity}}
+        </td>
+        <td style="padding: 10px; color: white;">
+          {{$orders->price}}
+        </td>
+        <td style="padding: 10px; color: white;">
+          @if($orders->status == 'not delivered')
+          <p style="color: red;">{{$orders->status}}</p>
+          @else
+          <p style="color: green;">{{$orders->status}}</p>
+          @endif
+        </td>
+      </tr>
+      @endforeach
+    </table>
+  </div>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -19,6 +19,12 @@
                 <a href="#"><h4>{{$product -> title}}</h4></a>
                 <h6>Rp.{{$product->price}}</h6>
                 <p>{{$product->description}}</p>
+                <form action="{{url('addcart', $product->id)}}" method="POST">
+                  @csrf
+                  <input type="number" value="1" min="1" class="form-control" style="width: 100px" name="quantity">
+                  <br>
+                  <input class="btn btn-primary" type="submit" value="Add Cart">
+                </form>
                 <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>

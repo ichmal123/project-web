@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 07:36 PM
+-- Generation Time: Jan 07, 2022 at 04:30 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -34,6 +34,7 @@ CREATE TABLE `carts` (
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -44,10 +45,8 @@ CREATE TABLE `carts` (
 -- Dumping data for table `carts`
 --
 
-INSERT INTO `carts` (`id`, `name`, `phone`, `address`, `product_title`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'user', '1029012039', 'sdashd', 'Lays', '1', '8000', '2021-12-24 11:26:51', '2021-12-24 11:26:51'),
-(2, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', '2021-12-24 11:33:45', '2021-12-24 11:33:45'),
-(3, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', '2021-12-24 11:34:57', '2021-12-24 11:34:57');
+INSERT INTO `carts` (`id`, `name`, `phone`, `address`, `product_title`, `image`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
+(6, 'ichmal123', '082284901844', 'Padang', 'Chitato', '1637936883.jpg', '1', '10000', '2022-01-07 08:17:34', '2022-01-07 08:17:34');
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,37 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2021_10_07_130254_create_sessions_table', 1),
 (7, '2021_11_19_112750_create_products_table', 2),
-(8, '2021_12_24_181459_create_carts_table', 3);
+(8, '2021_12_24_181459_create_carts_table', 3),
+(9, '2022_01_07_135639_create_orders_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quantity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `phone`, `address`, `product_name`, `quantity`, `price`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'user', '1029012039', 'sdashd', 'Lays', '1', '10000', 'delivered', '2022-01-07 07:22:36', '2022-01-07 07:46:28'),
+(2, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36'),
+(3, 'user', '1029012039', 'sdashd', 'Lays', '1', '10000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36'),
+(4, 'user', '1029012039', 'sdashd', 'Potato', '10', '8000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36');
 
 -- --------------------------------------------------------
 
@@ -176,12 +205,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('C0jSmzqL77MMlMicaj65iaIupWl1h9HRbeJnTIkh', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiMlF4QTg0N09hRWtFVTlGSEVXMkR2WExtSnhaUGVVdUV5ZE9UTzB1MSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639763050),
-('dcegOhR1ROofpqC018pKLro0j3E5kydhDNIwfnZq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQVlCZUR0R0hGdFRzVkUxdFRBNjQzdUZYSXhDS1NZMTZ2dlppMER6ZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1639764702),
-('GPw9JafiXX6Ond2BE6vGaymSr9CFTMQBOc1yJpaU', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSWhGaWJ2R0VaUVFCa1o1ZWMxb0xIT3VrSFI4WWx2OFhkUHhsS2dBMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6ODY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWFyY2g/X3Rva2VuPUloRmlidkdFWlFRQmtaNWVjMW9MSE91a0hSOFlsdjhYZFB4bEtnQTEmc2VhcmNoPXRvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639790877),
-('LbTszx2baIwbIEl0LqDrCve1r5a2yxRv0K8AFjB0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiNGU4UkZCS3o0N2F4QU84b3FoM3Y0Zk9iTmxEWG5XMkZRMXdqV21aMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1640369845),
-('r6OThqOz51HXPKkZ32PtPis9omyPJfDh1UmUmSvW', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSVRZcVZLcEhGVEZtdW9YaHVGekRUSUwzWjZXVmZSa09qMW9ubXJsMSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1639789666),
-('zFvF6rlb8DM7ReS6rCvCADPQAMpn44sk0Xnin4RJ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYmZjRzJJN1pCVTRrVlFMOGJHNm9oQ1RrR0ptZzJrNXVpT1dtVmxaTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWxmLW1hcmtldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRiWHdwb0FLa1pLbHp0eTk4cy5SeEsuQnpHR0dwWDByZHJuYUJMUTZERzFXTHRaLnFjcDFiSyI7fQ==', 1640370898);
+('bKLShY5oPsrfXHvChyMbTrktm0zDqUz4Q9EO7miG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVUFQd2NYVmo4WU5WVjVSNE9HS2N0VTk5b0RtaGhzenpkelU1WDNndCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1641562753),
+('vXDskRNqUCghv2BP6hoKJia89cTAmFMZlODlhjXs', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZ1RXTzREVTFqRUVGNG9kV3BYYk00dGt6Z3pxOU9VeVJ2cDAxaWRiNyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9oaXN0b3J5Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGJYd3BvQUtrWktsenR5OThzLlJ4Sy5CekdHR3BYMHJkcm5hQkxRNkRHMVdMdFoucWNwMWJLIjt9', 1641569356);
 
 -- --------------------------------------------------------
 
@@ -213,7 +238,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'user', 'user@gmail.com', '0', '1029012039', 'sdashd', NULL, '$2y$10$bXwpoAKkZKlzty98s.RxK.BzGGGpX0rdrnaBLQ6DG1WLtZ.qcp1bK', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:14:46', '2021-11-29 10:14:46'),
-(2, 'admin', 'admin@gmail.com', '1', '12381728', 'shdjahsjk', NULL, '$2y$10$2VghHKoaYoq0TMQyAYDZVenEZC03/4Epo.mpx4aZAjJF.tt6CddUe', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:15:28', '2021-11-29 10:15:28');
+(2, 'admin', 'admin@gmail.com', '1', '12381728', 'shdjahsjk', NULL, '$2y$10$2VghHKoaYoq0TMQyAYDZVenEZC03/4Epo.mpx4aZAjJF.tt6CddUe', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:15:28', '2021-11-29 10:15:28'),
+(3, 'ichmal123', 'ichmal123@gmail.com', '0', '082284901844', 'Padang', NULL, '$2y$10$Pg/fVQrXWqr4.xDuSJur0.yU2SVzNrfeYUtYSvWgidTGQlFu9/kSm', NULL, NULL, NULL, NULL, NULL, '2022-01-07 08:17:13', '2022-01-07 08:17:13');
 
 --
 -- Indexes for dumped tables
@@ -236,6 +262,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -281,7 +313,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -293,7 +325,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -311,7 +349,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
