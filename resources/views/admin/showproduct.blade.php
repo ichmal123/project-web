@@ -37,7 +37,7 @@
                   <img height="50" width="50" src="/productimage/{{$product->image}}">
                 </td>
                 <td><a class="btn btn-primary" href="{{url('updateview',$product->id)}}">Update</a></td>
-                <td><a class="btn btn-danger" href="{{url('deleteproduct',$product->id)}}">Delete</a></td>
+                <td><a class="btn btn-danger" onclick="return confirm('Are You Sure To Delete')" href="{{url('deleteproduct',$product->id)}}">Delete</a></td>
               </tr>
               @endforeach
             </table>
