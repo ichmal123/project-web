@@ -45,16 +45,30 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
+          @if(Route::has('login'))
+          @auth
           <a class="navbar-brand" href="{{url('self-market')}}"><h2>Self <em>Market</em></h2></a>
+          @else
+          <a class="navbar-brand" href="{{url('/')}}"><h2>Self <em>Market</em></h2></a>
+          @endauth
+          @endif
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
+                @if(Route::has('login'))
+                @auth
                 <a class="nav-link" href="{{url('self-market')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
+                @else
+                <a class="nav-link" href="{{url('/')}}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+                @endauth
+                @endif
               </li> 
               <li class="nav-item active">
                 <a class="nav-link" href="products.html">Our Products</a>

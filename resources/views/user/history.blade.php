@@ -124,7 +124,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           @if($orders->status == 'not delivered')
           <p style="color: red;">{{$orders->status}}</p>
           @else
-          <p style="color: green;">{{$orders->status}}</p>
+          <p style="color: rgb(124, 252, 2);">{{$orders->status}}</p>
           @endif
         </td>
       </tr>

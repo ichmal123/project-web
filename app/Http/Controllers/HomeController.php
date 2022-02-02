@@ -18,7 +18,7 @@ class HomeController extends Controller
         if($usertype == '1'){
             return view('admin.home');
         }else {
-            $data = product::paginate(3);
+            $data = product::paginate(6);
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
             return view('user.home', compact('data', 'count'));
@@ -26,7 +26,7 @@ class HomeController extends Controller
     }
 
     public function index(){
-        $data = product::paginate(3);
+        $data = product::paginate(6);
     	return view('user.home',compact('data'));	
     	
     }
@@ -37,7 +37,14 @@ class HomeController extends Controller
             $data = product::paginate(9);
             return view('user.menuproduct',compact('data', 'count'));   
         
-    }   
+    }
+
+    public function ourproduct(){
+            $data = product::paginate(9);
+            return view('user.menuproduct',compact('data'));   
+        
+    }
+
     public function search(Request $request){
         $search = $request->search;
         if ($search == '') {

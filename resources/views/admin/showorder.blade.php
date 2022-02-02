@@ -30,8 +30,18 @@
                 <td style="padding: 20px">{{$orders->product_name}}</td>
                 <td style="padding: 20px">{{$orders->quantity}}</td>
                 <td style="padding: 20px">{{$orders->price}}</td>
-                <td style="padding: 20px">{{$orders->status}}</td>
-                <td style="padding: 20px"><a class="btn btn-success" href="{{url('updatestatus', $orders->id)}}">Delivered</a></td>
+                <td style="padding: 20px">
+                  @if($orders->status == 'delivered')
+                  <p style="color: rgb(124, 252, 2);">
+                    {{$orders->status}}
+                  </p>
+                  @else
+                  <p style="color: red;">
+                    {{$orders->status}}
+                  </p>
+                  @endif
+                </td>
+                <td style="padding: 20px"><a class="btn btn-success" onclick="return confirm('Are you sure ?')" href="{{url('updatestatus', $orders->id)}}">Delivered</a></td>
               </tr>
               @endforeach
             </table>

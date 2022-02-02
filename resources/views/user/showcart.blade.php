@@ -123,12 +123,12 @@ https://templatemo.com/tm-546-sixteen-clothing
           {{$carts->price}}
         </td>
         <td style="padding: 10px; color: white;">
-          <a class="btn btn-danger" href="{{url('delete', $carts->id)}}">Delete</a>
+          <a class="btn btn-danger" onclick="return confirm('Are You Sure To Delete')" href="{{url('delete', $carts->id)}}">Delete</a>
         </td>
       </tr>
       @endforeach
     </table>
-    <button class="btn btn-success">Confirm Button</button>
+    <button style="margin-top: 20px;" class="btn btn-success">Confirm Button</button>
   </form>
   </div>
     <!-- Bootstrap core JavaScript -->
