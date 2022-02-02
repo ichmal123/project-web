@@ -30,6 +30,8 @@ route::get('/', [HomeController::class, 'index']);
 
 route::get('/menuproduct', [HomeController::class, 'menuproduct']);
 
+route::get('/ourproduct', [HomeController::class, 'ourproduct']);
+
 route::get('/product', [AdminController::class, 'product']);
 
 route::get('/showproduct', [AdminController::class, 'showproduct']);

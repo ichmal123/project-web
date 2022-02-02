@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jan 2022 pada 17.52
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.2
+-- Generation Time: Jan 07, 2022 at 04:30 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `carts`
+-- Table structure for table `carts`
 --
 
 CREATE TABLE `carts` (
@@ -41,7 +42,7 @@ CREATE TABLE `carts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `carts`
+-- Dumping data for table `carts`
 --
 
 INSERT INTO `carts` (`id`, `name`, `phone`, `address`, `product_title`, `image`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
@@ -50,7 +51,7 @@ INSERT INTO `carts` (`id`, `name`, `phone`, `address`, `product_title`, `image`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -66,7 +67,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -76,7 +77,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -93,7 +94,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -110,20 +111,19 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone`, `address`, `product_name`, `quantity`, `price`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'user', '1029012039', 'sdashd', 'Lays', '1', '10000', 'delivered', '2022-01-07 07:22:36', '2022-01-07 07:46:28'),
 (2, 'user', '1029012039', 'sdashd', 'Chitato', '1', '10000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36'),
 (3, 'user', '1029012039', 'sdashd', 'Lays', '1', '10000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36'),
-(4, 'user', '1029012039', 'sdashd', 'Potato', '10', '8000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36'),
-(5, 'user', '1029012039', 'sdashd', 'Lays', '1', '8000', 'not delivered', '2022-01-07 08:58:41', '2022-01-07 08:58:41');
+(4, 'user', '1029012039', 'sdashd', 'Potato', '10', '8000', 'not delivered', '2022-01-07 07:22:36', '2022-01-07 07:22:36');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -133,7 +133,7 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `password_resets`
+-- Dumping data for table `password_resets`
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
@@ -142,7 +142,7 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -160,7 +160,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -175,7 +175,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `price`, `description`, `quantity`, `image`, `created_at`, `updated_at`) VALUES
@@ -183,24 +183,12 @@ INSERT INTO `products` (`id`, `title`, `price`, `description`, `quantity`, `imag
 (10, 'Lays', '8000', 'Rasa Rumput Laut 35gr', '75', '1637936936.jpg', '2021-11-26 07:28:56', '2021-11-26 07:28:56'),
 (11, 'Cheetos', '2000', 'Rasa Jagung Bakar 15gr', '110', '1637936987.jpg', '2021-11-26 07:29:47', '2021-11-29 10:58:54'),
 (12, 'Chiki Balls', '3000', 'Rasa Ayam Bakar 30gr', '50', '1637937041.jpg', '2021-11-26 07:30:41', '2021-11-26 07:30:41'),
-(13, 'French Fries 2000', '5000', 'Kentang Goreng dengan Saus Sambal 68gr', '60', '1641573604.jpg', '2021-11-26 07:31:55', '2022-01-07 09:40:04'),
-(15, 'Tehbotol Sosro', '10100', 'Kotak 1 L', '100', '1641573794.jfif', '2022-01-07 09:43:14', '2022-01-07 09:43:14'),
-(16, 'Paseo Tissue Basah', '60100', 'Anti Bacterial 25 sheets', '50', '1641573837.jfif', '2022-01-07 09:43:57', '2022-01-07 09:43:57'),
-(17, 'Sunlight', '16000', 'Sabun Cuci Piring Jeruk Nipis 755 mL', '70', '1641573866.jfif', '2022-01-07 09:44:26', '2022-01-07 09:50:38'),
-(18, 'Nice Tissue Wajah', '43400', 'Kiloan 900 gr', '80', '1641573907.jfif', '2022-01-07 09:45:07', '2022-01-07 09:45:07'),
-(19, 'Gulaku', '37000', 'Sugar Pillow Pack Premium 200 gr', '70', '1641573938.jfif', '2022-01-07 09:45:38', '2022-01-07 09:45:38'),
-(20, 'Bango Kecap Manis', '11500', 'Pouch Flatpack 210 mL', '50', '1641573959.jfif', '2022-01-07 09:45:59', '2022-01-07 09:45:59'),
-(21, 'Sania', '21500', 'Premium Cooking Oil Pouch 1 L', '100', '1641573983.jfif', '2022-01-07 09:46:23', '2022-01-07 09:46:23'),
-(22, 'Indofood Sambal Pedas', '11100', 'Botol 275 mL', '20', '1641574010.jfif', '2022-01-07 09:46:50', '2022-01-07 09:46:50'),
-(23, 'Swallow Globe', '9400', 'Agar-Agar Hijau 2 x 7 gr', '20', '1641574039.jfif', '2022-01-07 09:47:19', '2022-01-07 09:50:26'),
-(24, 'HYDRASHOOTHE', '65000', 'SUNSCREEN GEL SPF45 PA++++', '30', '1641574069.jfif', '2022-01-07 09:47:49', '2022-01-07 09:47:49'),
-(25, 'Lifebuoy Lemon Fresh', '42000', 'Body Wash 850 mL', '50', '1641574108.jfif', '2022-01-07 09:48:28', '2022-01-07 09:48:28'),
-(26, 'Vaseline Lip Theraphy', '34500', 'Jar Rosy 7 gr', '20', '1641574127.jfif', '2022-01-07 09:48:47', '2022-01-07 09:48:47');
+(13, 'French Fries 2000', '5000', 'Kentang Goreng dengan Saus Sambal 68gr', '60', '1639186089.jpg', '2021-11-26 07:31:55', '2021-12-10 18:28:09');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -213,17 +201,17 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `sessions`
+-- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('uc3VBS339ipsvkKQYMGQPLKKSVZMUfOcanNPSo9V', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Edg/96.0.1054.62', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVjdxanlneWVraVVPSE9kdU9mYmlHNlNUNnpxd1p6Ump2ZGdac2NKTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8/cGFnZT0xIjt9fQ==', 1641574268),
+('bKLShY5oPsrfXHvChyMbTrktm0zDqUz4Q9EO7miG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVUFQd2NYVmo4WU5WVjVSNE9HS2N0VTk5b0RtaGhzenpkelU1WDNndCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1641562753),
 ('vXDskRNqUCghv2BP6hoKJia89cTAmFMZlODlhjXs', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZ1RXTzREVTFqRUVGNG9kV3BYYk00dGt6Z3pxOU9VeVJ2cDAxaWRiNyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9oaXN0b3J5Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGJYd3BvQUtrWktsenR5OThzLlJ4Sy5CekdHR3BYMHJkcm5hQkxRNkRHMVdMdFoucWNwMWJLIjt9', 1641569356);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -245,52 +233,51 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'user', 'user@gmail.com', '0', '1029012039', 'sdashd', NULL, '$2y$10$bXwpoAKkZKlzty98s.RxK.BzGGGpX0rdrnaBLQ6DG1WLtZ.qcp1bK', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:14:46', '2021-11-29 10:14:46'),
 (2, 'admin', 'admin@gmail.com', '1', '12381728', 'shdjahsjk', NULL, '$2y$10$2VghHKoaYoq0TMQyAYDZVenEZC03/4Epo.mpx4aZAjJF.tt6CddUe', NULL, NULL, NULL, NULL, NULL, '2021-11-29 10:15:28', '2021-11-29 10:15:28'),
-(3, 'ichmal123', 'ichmal123@gmail.com', '0', '082284901844', 'Padang', NULL, '$2y$10$Pg/fVQrXWqr4.xDuSJur0.yU2SVzNrfeYUtYSvWgidTGQlFu9/kSm', NULL, NULL, NULL, NULL, NULL, '2022-01-07 08:17:13', '2022-01-07 08:17:13'),
-(4, 'ofi', 'ofi@gmail.com', '0', '082268179560', 'Padang', NULL, '$2y$10$/cxBl3/jgYP0gMe89ujwz.P.caQSPUMIMoCbmNwpMZkOGNh2XWDo.', NULL, NULL, NULL, NULL, NULL, '2022-01-07 09:22:59', '2022-01-07 09:22:59');
+(3, 'ichmal123', 'ichmal123@gmail.com', '0', '082284901844', 'Padang', NULL, '$2y$10$Pg/fVQrXWqr4.xDuSJur0.yU2SVzNrfeYUtYSvWgidTGQlFu9/kSm', NULL, NULL, NULL, NULL, NULL, '2022-01-07 08:17:13', '2022-01-07 08:17:13');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `carts`
+-- Indexes for table `carts`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -298,13 +285,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -312,57 +299,57 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `carts`
+-- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
